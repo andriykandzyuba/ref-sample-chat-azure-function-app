@@ -1,0 +1,32 @@
+# Example Terraform variables
+# Copy this file to terraform.tfvars and update with your values
+
+resource_group_name      = "rg-chatapi-dev"
+location                 = "eastus"
+storage_account_name     = "stchatapi12345"  # Must be globally unique
+app_service_plan_name    = "asp-chatapi-dev"
+app_service_plan_sku     = "B1"
+function_app_name        = "func-chatapi-12345"  # Must be globally unique
+application_insights_name = "appi-chatapi-dev"
+key_vault_name           = "kv-chatapi-12345"  # Must be globally unique
+environment              = "dev"
+
+cors_allowed_origins = [
+  "https://yourdomain.com",
+  "http://localhost:3000"
+]
+
+tags = {
+  Environment = "development"
+  ManagedBy   = "Terraform"
+  Project     = "ChatAPI"
+  Owner       = "DevOps Team"
+}
+
+# AKS Configuration (set enable_aks_deployment to true to create AKS resources)
+enable_aks_deployment   = false
+container_registry_name = "acrchatapi12345"  # Must be globally unique
+aks_cluster_name        = "aks-chatapi-dev"
+aks_dns_prefix          = "chatapi"
+aks_node_count          = 2
+aks_vm_size             = "Standard_D2_v2"
