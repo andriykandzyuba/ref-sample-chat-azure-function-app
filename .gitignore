@@ -104,3 +104,6 @@ secrets/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Bundles
+*.zip

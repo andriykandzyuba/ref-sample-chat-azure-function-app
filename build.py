@@ -51,6 +51,7 @@ def print_info(message: str):
 
 
 def run_command(cmd: List[str], cwd: Optional[str] = None, check: bool = True) -> subprocess.CompletedProcess:
+    my_env = os.environ.copy()
     """Run a shell command and return the result"""
     try:
         result = subprocess.run(
@@ -58,7 +59,8 @@ def run_command(cmd: List[str], cwd: Optional[str] = None, check: bool = True) -
             cwd=cwd,
             check=check,
             text=True,
-            capture_output=False
+            capture_output=False,
+            env=my_env,
         )
         return result
     except subprocess.CalledProcessError as e:
@@ -322,7 +324,7 @@ def az_deploy(function_app_name: str, resource_group: str):
     # Deploy to Azure
     print_info(f"Deploying to {function_app_name} in {resource_group}...")
     run_command([
-        "az", "functionapp", "deployment", "source", "config-zip",
+        "az.cmd", "functionapp", "deployment", "source", "config-zip",
         "--resource-group", resource_group,
         "--name", function_app_name,
         "--src", "function-app.zip",
