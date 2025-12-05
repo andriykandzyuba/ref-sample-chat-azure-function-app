@@ -324,7 +324,7 @@ def az_deploy(function_app_name: str, resource_group: str):
     # Deploy to Azure
     print_info(f"Deploying to {function_app_name} in {resource_group}...")
     run_command([
-        "az.cmd", "functionapp", "deployment", "source", "config-zip",
+        "az", "functionapp", "deployment", "source", "config-zip",
         "--resource-group", resource_group,
         "--name", function_app_name,
         "--src", "function-app.zip",
